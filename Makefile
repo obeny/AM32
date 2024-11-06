@@ -43,10 +43,12 @@ VERSION_MINOR := $(shell $(FGREP) "define VERSION_MINOR" $(MAIN_INC_DIR)/version
 FIRMWARE_VERSION := $(VERSION_MAJOR).$(VERSION_MINOR)
 
 # Compiler options
+CFLAGS_WARN := -Werror -Wall -Wundef -Wextra -Wno-unused-parameter -Wno-stringop-truncation -Wunsafe-loop-optimizations -Wdouble-promotion -Wuninitialized -Wduplicated-cond -Wno-stringop-overflow
+CFLAGS_FLOAT := -mfloat-abi=soft
 
-CFLAGS_BASE := -fsingle-precision-constant -fomit-frame-pointer -ffast-math
-CFLAGS_BASE += -I$(MAIN_INC_DIR) -g3 -O2 -ffunction-sections
-CFLAGS_BASE += -Wall -Wundef -Wextra -Werror -Wno-unused-parameter -Wno-stringop-truncation
+CFLAGS_BASE := -fsingle-precision-constant -fomit-frame-pointer -ffast-math $(CFLAGS_FLOAT)
+CFLAGS_BASE += -I$(MAIN_INC_DIR) -g3 -std=gnu17 -O2 -ffunction-sections -fdata-sections -fweb -ftree-vectorize -fmerge-all-constants
+CFLAGS_BASE += $(CFLAGS_WARN)
 
 CFLAGS_COMMON := $(CFLAGS_BASE)
 

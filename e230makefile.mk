@@ -5,7 +5,7 @@ TARGETS_$(MCU) := $(call get_targets,$(MCU))
 
 HAL_FOLDER_$(MCU) := $(HAL_FOLDER)/$(call lc,$(MCU))
 
-MCU_$(MCU) := -mfloat-abi=soft -mthumb -mcpu=cortex-m23
+MCU_$(MCU) := -mthumb -mcpu=cortex-m23
 LDSCRIPT_$(MCU) := $(wildcard $(HAL_FOLDER_$(MCU))/*.ld)
 
 SRC_BASE_DIR_$(MCU) := \
