@@ -1616,13 +1616,18 @@ static void checkDeviceInfo(void)
 #define DEVINFO_MAGIC1 0x5925e3da
 #define DEVINFO_MAGIC2 0x4eb863d9
 
-    const struct devinfo {
+    typedef struct {
         uint32_t magic1;
         uint32_t magic2;
         const uint8_t deviceInfo[9];
-    } *devinfo = (struct devinfo *)(0x1000 - 32);
-    if (devinfo->magic1 != DEVINFO_MAGIC1 ||
-        devinfo->magic2 != DEVINFO_MAGIC2) {
+    } devinfo_t;
+
+    const devinfo_t *devinfo = (devinfo_t*)(0x1000 - 32);
+    uint32_t magic1 = devinfo->magic1;
+    uint32_t magic2 = devinfo->magic1;
+
+    if (magic1 != DEVINFO_MAGIC1 ||
+        magic2 != DEVINFO_MAGIC2) {
         // bootloader does not support this feature, nothing to do
         return;
     }
