@@ -42,10 +42,12 @@ VERSION_MINOR := $(shell $(FGREP) "define VERSION_MINOR" $(MAIN_INC_DIR)/version
 FIRMWARE_VERSION := $(VERSION_MAJOR).$(VERSION_MINOR)
 
 # Compiler options
+CFLAGS_WARN := -Werror -Wall -Wextra -Wundef -Wno-unused-parameter -Wno-stringop-truncation
+CFLAGS_WARN += -Wunsafe-loop-optimizations -Wdouble-promotion -Wuninitialized -Wduplicated-cond -Wno-stringop-overflow
 
-CFLAGS_BASE := -fsingle-precision-constant -fomit-frame-pointer -ffast-math
-CFLAGS_BASE += -I$(MAIN_INC_DIR) -g3 -O2 -ffunction-sections --specs=nosys.specs
-CFLAGS_BASE += -Wall -Wundef -Wextra -Werror -Wno-unused-parameter -Wno-stringop-truncation
+CFLAGS_BASE := -mfloat-abi=soft -fsingle-precision-constant -fomit-frame-pointer -ffast-math
+CFLAGS_BASE += -I$(MAIN_INC_DIR) -g3 -O2 -ffunction-sections -fweb -ftree-vectorize --specs=nosys.specs
+CFLAGS_BASE += $(CFLAGS_WARN)
 
 CFLAGS_COMMON := $(CFLAGS_BASE)
 
