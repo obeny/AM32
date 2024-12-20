@@ -43,6 +43,34 @@
 // #define USE_ADC_INPUT
 // #define USE_ALKAS_DEBUG_LED
 
+// HobbyWing Xrotor
+#ifdef  XROTOR45_F421
+#define FIRMWARE_NAME "XRotor45 F4 "
+#define FILE_NAME "XROTOR45_F421"
+#define DEAD_TIME 80
+#define HARDWARE_GROUP_AT_C
+#define HARDWARE_GROUP_AT_540
+#define USE_SERIAL_TELEMETRY
+#endif
+
+#ifdef  XROTOR65_F421
+#define FIRMWARE_NAME "XRotor65 F4 "
+#define FILE_NAME "XROTOR65_F421"
+#define DEAD_TIME 80
+#define HARDWARE_GROUP_AT_C
+#define HARDWARE_GROUP_AT_540
+#define USE_SERIAL_TELEMETRY
+#endif
+
+#ifdef XROTOR40_F051
+#define FIRMWARE_NAME "XRotor40 F0 "
+#define FILE_NAME "XROTOR40_F051"
+#define DEAD_TIME 45
+#define USE_SERIAL_TELEMETRY
+
+#define HARDWARE_GROUP_F0_A
+#endif
+// end HobbyWing Xrotor
 
 #ifdef LUMENIER_12S_F421
 #define FIRMWARE_NAME "Lumenier 12s"
@@ -544,23 +572,6 @@
 #define PA6_NTC_ONLY
 #endif
 
-#ifdef  XROTOR45_F421
-#define FIRMWARE_NAME "XRotor45 F4"
-#define FILE_NAME "XROTOR45_F421"
-#define DEAD_TIME 80
-#define HARDWARE_GROUP_AT_C
-#define HARDWARE_GROUP_AT_540
-#define USE_SERIAL_TELEMETRY
-#endif
-
-#ifdef  XROTOR65_F421
-#define FIRMWARE_NAME "XRotor65 F4"
-#define FILE_NAME "XROTOR65_F421"
-#define DEAD_TIME 80
-#define HARDWARE_GROUP_AT_C
-#define HARDWARE_GROUP_AT_540
-#define USE_SERIAL_TELEMETRY
-#endif
 
 #ifdef HAKRC_G_F421
 #define FIRMWARE_NAME "HAKRC F4 G  "
