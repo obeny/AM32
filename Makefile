@@ -47,7 +47,7 @@ CFLAGS_WARN += -Wunsafe-loop-optimizations -Wdouble-promotion -Wuninitialized -W
 
 CFLAGS_BASE := -mfloat-abi=soft -fsingle-precision-constant -fomit-frame-pointer -ffast-math
 CFLAGS_BASE += -I$(MAIN_INC_DIR) -g3 -O2 -ffunction-sections -fweb -ftree-vectorize --specs=nosys.specs
-CFLAGS_BASE += $(CFLAGS_WARN)
+CFLAGS_BASE += $(CFLAGS_WARN) --param=min-pagesize=0
 
 CFLAGS_COMMON := $(CFLAGS_BASE)
 
